@@ -1,0 +1,15 @@
+dependencies:
+- name: mongodb
+  repository: file://../mongodb
+  version: 0.1.0
+- name: rabbitmq
+  repository: file://../rabbitmq
+  version: 0.1.0
+- name: notification-fe
+  repository: file://../notification-fe
+  version: 0.1.0
+- name: notification-be
+  repository: file://../notification-be
+  version: 0.1.0
+digest: sha256:7e69627b38ad906b1d486c5c8033d48e0c6c192603d428e79a8e441a364f40a7
+generated: "2021-01-19T11:06:57.813523+02:00"

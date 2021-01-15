@@ -1,0 +1,8 @@
+fullnameOverride: pini-123
+service:
+  port: 80
+kafka:
+  ingress:
+    enabled: true
+    hostname: pini.local
+    apiVersion: networking.k8s.io/v1beta1

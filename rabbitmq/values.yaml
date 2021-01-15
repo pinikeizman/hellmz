@@ -1,0 +1,7 @@
+rabbitmq:
+  nameOverride: rabbitmq
+  fullnameOverride: rabbitmq
+  auth:
+    username: admin
+    password: admin
+    erlangCookie: secretcookie

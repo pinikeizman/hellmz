@@ -1,0 +1,58 @@
+global:
+  baseDomain: pinikeizman.com
+# notification-be:
+  # ingress:
+  #   annotations:
+  #     ingress.kubernetes.io/rewrite-target: /
+  #     kubernetes.io/ingress.class: "gce"
+  #     kubernetes.io/ingress.allow-http: "false"
+  #   tls:
+  #     - hosts:
+  #       - "pinikeizman.com"
+  #       secretName: pinikeizman.com
+  #   hosts:
+  #     - host: "www.{{ .Values.global.baseDomain }}"
+  #       paths:
+  #         - path: /api/*
+  #     - host: "{{ .Values.global.baseDomain }}"
+  #       paths:
+  #         - path: /api/*
+ingress:
+  enabled: true
+  annotations: 
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.allow-http: "false"
+    ingress.kubernetes.io/rewrite-target: /
+  tls:
+    - hosts:
+      - "pinikeizman.com"
+      secretName: pinikeizman.com
+  hosts:
+    - host: "www.{{ .Values.global.baseDomain }}"
+      paths:
+        - path: /
+          serviceName: notification-fe
+          servicePort: 80
+          pathType: Exact
+        - path: /api/*
+          serviceName: notification-be
+          servicePort: 8080
+          pathType: Prefix
+        - path: /static/*
+          serviceName: notification-fe
+          servicePort: 80
+          pathType: Prefix
+    - host: "{{ .Values.global.baseDomain }}"
+      paths:
+        - path: /
+          serviceName: notification-fe
+          servicePort: 80
+          pathType: Prefix
+        - path: /api/*
+          serviceName: notification-be
+          servicePort: 8080
+          pathType: Prefix
+        - path: /static/*
+          serviceName: notification-fe
+          servicePort: 80
+          pathType: Prefix

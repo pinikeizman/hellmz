@@ -1,0 +1,4 @@
+mongodb:
+  auth:
+    enabled: false
+  fullnameOverride: mongodb
